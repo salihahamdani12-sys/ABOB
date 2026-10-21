@@ -11,7 +11,6 @@ import { VocabularyReviewModal } from './components/VocabularyReviewModal';
 import { FocusSessionModal } from './components/FocusSessionModal';
 import { PassageSituationModal } from './components/PassageSituationModal';
 import { AnalyticsDashboardModal } from './components/AnalyticsDashboardModal';
-import { SpeechDiagnosticsModal } from './components/SpeechDiagnosticsModal';
 import { PasswordLockScreen } from './components/PasswordLockScreen';
 import { getBookInfo, getPage, getAllPages, getBookChapters, getSurroundingExtendedContext } from './data/bookService';
 import { generateInstantTranslation } from './data/translationsDict';
@@ -172,7 +171,6 @@ function AppContent() {
   const [passageModalPassageId, setPassageModalPassageId] = useState<string | undefined>(undefined);
   const [passageModalChapterNumber, setPassageModalChapterNumber] = useState<number | undefined>(undefined);
   const [isAnalyticsModalOpen, setIsAnalyticsModalOpen] = useState<boolean>(false);
-  const [isSpeechDiagnosticsModalOpen, setIsSpeechDiagnosticsModalOpen] = useState<boolean>(false);
 
   const handleOpenPassageSituation = (chapterNumber?: number, passageId?: string) => {
     setPassageModalChapterNumber(chapterNumber);
@@ -542,7 +540,6 @@ function AppContent() {
         onOpenFocusSession={() => setIsFocusModalOpen(true)}
         onOpenPassageSituation={() => handleOpenPassageSituation()}
         onOpenAnalytics={() => setIsAnalyticsModalOpen(true)}
-        onOpenSpeechDiagnostics={() => setIsSpeechDiagnosticsModalOpen(true)}
         activeBook={bookInfo}
         onSelectBook={handleSelectBook}
         isDarkMode={isDarkMode}
@@ -700,11 +697,6 @@ function AppContent() {
         }}
         onOpenVocabReview={() => handleOpenVocabReview('cards')}
         onOpenFocusSession={() => setIsFocusModalOpen(true)}
-      />
-
-      <SpeechDiagnosticsModal
-        isOpen={isSpeechDiagnosticsModalOpen}
-        onClose={() => setIsSpeechDiagnosticsModalOpen(false)}
       />
 
       {/* Footer */}

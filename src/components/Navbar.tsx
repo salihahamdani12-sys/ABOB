@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   BookOpen, HelpCircle, Compass, Type, Layers, Sparkles, Moon, Sun, 
   Star, Flag, CheckCircle2, TrendingUp, ChevronDown, Trophy, ArrowRight,
-  Timer, Flame, Play, Pause, BarChart3, Volume2
+  Timer, Flame, Play, Pause, BarChart3
 } from 'lucide-react';
 import { BookId, BookInfo, ChapterMeta, FocusSessionState } from '../types';
 import { BOOKS } from '../data/books';
@@ -40,7 +40,6 @@ interface NavbarProps {
   onOpenPassageSituation?: () => void;
   onOpenAnalytics?: () => void;
   onOpenMindMap?: () => void;
-  onOpenSpeechDiagnostics?: () => void;
   activeBook: BookInfo;
   onSelectBook: (bookId: BookId) => void;
   isDarkMode?: boolean;
@@ -64,7 +63,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenPassageSituation,
   onOpenAnalytics,
   onOpenMindMap,
-  onOpenSpeechDiagnostics,
   activeBook,
   onSelectBook,
   isDarkMode = false,
@@ -600,16 +598,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Reader Quick Controls */}
           {currentView === 'reader' && (
             <div className="hidden md:flex items-center gap-2.5">
-              {/* Speech Diagnostics */}
-              {onOpenSpeechDiagnostics && (
-                <button
-                  onClick={onOpenSpeechDiagnostics}
-                  className="p-1.5 text-xs text-amber-900 dark:text-stone-200 bg-amber-100/80 dark:bg-stone-800 hover:bg-amber-200/80 dark:hover:bg-stone-700 rounded-lg border border-amber-200 dark:border-stone-700 transition-all cursor-pointer"
-                  title="Speech Diagnostics"
-                >
-                  <Volume2 className="w-3.5 h-3.5" />
-                </button>
-              )}
               {/* Font size toggle */}
               <button
                 id="font-size-toggle-btn"
